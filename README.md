@@ -23,6 +23,11 @@ Para que los módulos funcionen correctamente (como leer un sensor mientras un m
 
 Los códigos están divididos según el tipo de módulo en el que estés trabajando:
 
+### 🧩 `00_Maquina_de_Estados` (Estructura Base)
+Es la plantilla estructural ideal para comprender el funcionamiento asíncrono y comenzar a programar de cero.
+* **Sensores/Actuadores:** Sensor Infrarrojo (TCRT5000) y Motor DC (con Driver L298N).
+* **Propósito:** Demuestra una máquina de 3 estados limpia (`ESPERA`, `ACTIVO` y `ENFRIANDO`). Utiliza `millis()` para transicionar luego de actuar el motor por 2 segundos y mantener un tiempo de seguridad de 1 segundo, sirviendo de base para cualquier módulo reactivo.
+
 ### 🔴🟢🔵 `01_Sorting_RGB` (Módulo 01 - Clasificación)
 Diseñado para el módulo encargado de separar las bolitas por color.
 * **Sensores/Actuadores:** Sensor de Color (TCS3200) y Servo Motor (MG90S).
