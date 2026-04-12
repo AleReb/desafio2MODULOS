@@ -1,4 +1,4 @@
-const int PIN_IR = 34;
+const int PIN_IR = 7;
 const int ENA = 10;  // Pin PWM controla la velocidad del motor
 const int IN1 = 11;  // Pin de control dirección 1
 const int IN2 = 12;  // Pin de control dirección 2
