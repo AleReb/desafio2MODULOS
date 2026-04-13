@@ -57,6 +57,36 @@ Programado como modelo para el componente final o de conteo. Ideal para agrupar 
 
 ---
 
+## 🛠️ Códigos de Pruebas y Componentes Aislados
+
+Además de los módulos principales, este repositorio incluye códigos unitarios que los equipos pueden usar para probar por separado cada pieza de hardware o estudiar lógicas avanzadas.
+
+### 🧮 `LedTest8DigitCounter`
+Driver demostrativo y sketch de prueba para controlar un **Display LED de 8 dígitos** (basado en registros de desplazamiento 74HC595 y visualizadores de 7 segmentos 3461BG). 
+* **Pines en ESP32-S3:** `DATA_PIN = 21`, `LATCH_PIN = 19`, `CLOCK_PIN = 20`.
+* **Propósito:** Ofrece varios modos (activables por el puerto serie) para probar un contador numérico, mostrar un solo dígito o verificar los fijos 0-7 y 1-8. Se encarga a bajo nivel de multiplexar (*refreshDisplay*) el encendido de los 8 displays.
+
+### 📐 `tcs3200_example_calibrated_base`
+Es el modelo avanzado y fundacional para el sensor de color TCS3200.
+* **Pines:** `S0 = 8`, `S1 = 9`, `S2 = 11`, `S3 = 10`, `OUT = 12`.
+* **Propósito:** Contiene una calibración profunda (capturando blanco y negro por comando serie) y un algoritmo de distancia euclidiana espacial que clasifica los colores de manera estrictamente matemática. Úsalo si necesitas una exactitud gigantesca más allá del umbral básico, o para experimentar.
+
+### 🚪 `IR_COMPUERTA`
+Prueba de integración en solitario muy práctica y sencilla que fusiona un sensor infrarrojo óptico con un servomotor.
+* **Pines:** Sensor IR = `7`, Servo Motor = `6`.
+* **Propósito:** Revisa constantemente el TCRT5000 y al detectar algo, mueve instantáneamente la compuerta a 5° por un delay de 1.5s y vuelve a 155°. Es el ejercicio perfecto antes de intentar programar el módulo `03_Contador_Retorno`.
+
+### 🦾 `Servo`
+Código de prueba atómico para los motores Servo.
+* **Pines:** Servo Motor = `6`.
+* **Propósito:** Emplea `ESP32Servo` limitando los barridos solo de 5° a 175° (protegiendo engranajes) permitiendo asegurar que la librería y el PWM del ESP32 funcionan bien.
+
+### ⏪ `Referencias_clasesanteriores`
+Sección de retroalimentación en la que se archivan scripts históricos: `basePwmMotor` y `controlMotorPwm`. 
+* **Propósito:** Sirven de documentación viva (usando el puente L298N en pines `10, 11, 12`) sobre cómo se construyó inicialmente la lógica para acelerar y revertir motores DC mediante ráfagas de ciclos de trabajo (`analogWrite`), sin involucrar WiFi y sin usar el concepto asíncrono de millis. Consúltalo si perdiste el hilo al entender el pin `ENA`.
+
+---
+
 ## 🚀 Cómo empezar
 
 1. Estudia los ejemplos simples de control provistos dentro de la carpeta `Referencias_clasesanteriores` si tienes dudas sobre conexiones de un solo componente.
