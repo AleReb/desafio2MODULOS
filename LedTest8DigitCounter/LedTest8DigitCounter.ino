@@ -24,9 +24,9 @@
 // -------------------------
 // Pin definition
 // -------------------------
-const int DATA_PIN  = 21;
-const int LATCH_PIN = 19;
-const int CLOCK_PIN = 20;
+const int DATA_PIN  = 21; // HARDWARE DIO
+const int LATCH_PIN = 19; // HARDWARE RCK
+const int CLOCK_PIN = 20; // HARDWARE SCK
 
 // -------------------------
 // Global status flags
