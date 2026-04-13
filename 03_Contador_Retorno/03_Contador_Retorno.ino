@@ -1,4 +1,4 @@
-#include <Servo.h>
+#include <ESP32Servo.h>
 
 // --- Pines y Constantes ---
 const int PIN_IR_CONTADOR = 34; // Pin del sensor infrarrojo (ajustar a la protoboard)
@@ -27,7 +27,14 @@ void setup() {
   
   pinMode(PIN_IR_CONTADOR, INPUT);
   
-  servoCompuerta.attach(SERVO_PIN);
+  // Permite la asignación de todos los temporizadores
+  ESP32PWM::allocateTimer(0);
+  ESP32PWM::allocateTimer(1);
+  ESP32PWM::allocateTimer(2);
+  ESP32PWM::allocateTimer(3);
+  servoCompuerta.setPeriodHertz(50); // servo estándar de 50 hz
+  
+  servoCompuerta.attach(SERVO_PIN, 1000, 2000);
   servoCompuerta.write(POS_DEFECTO); // Iniciar guardando en posición neutral
   
   Serial.println("Iniciando Módulo 05: Contador Retorno");
